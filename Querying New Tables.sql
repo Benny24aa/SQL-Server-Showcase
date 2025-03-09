@@ -33,3 +33,10 @@ SELECT TOP (5) [OrderID]
   FROM dbo.OrderFullDetail
   group by ShipperName
   Having count(ShipperName) > 0
+
+  -- Number of Orders by Each Order Date
+  SELECT count(OrderDate) as Count, OrderDate
+  FROM dbo.OrderFullDetail
+  group by OrderDate
+  Having count(OrderDate) > 0
+  Order BY count(OrderDate) DESC
