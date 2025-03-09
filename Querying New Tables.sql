@@ -27,3 +27,9 @@ SELECT TOP (5) [OrderID]
   Select *
   FROM dbo.OrderFullDetail
   Where OrderID is NULL
+
+  -- Number of Orders by Shipper Company
+  SELECT ShipperName, count(ShipperName) AS NumberOrders
+  FROM dbo.OrderFullDetail
+  group by ShipperName
+  Having count(ShipperName) > 0
