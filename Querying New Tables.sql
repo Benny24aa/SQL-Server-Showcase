@@ -56,3 +56,20 @@ SELECT TOP (5) [OrderID]
   group by ShipperName, Category
   HAVING count(Category) >0
   ORDER BY ShipperName, count(Category) DESC
+
+
+
+   Select Northwind.dbo.Employees.EmployeeID, CONCAT(Northwind.dbo.Employees.FirstName , ' ' , Northwind.dbo.Employees.Lastname) as EmployeeName, BirthDate, DATEDIFF(year, BirthDate, '2025-09-03')AS Age
+INTO Northwind.dbo.SalaryReference
+FROM Northwind.dbo.Employees;
+
+ALTER TABLE dbo.SalaryReference
+ADD SalaryRecommend AS
+CASE
+WHEN (Age > 70) THEN '25000'
+WHEN (Age > 60) THEN '20000'
+WHEN (Age > 50) THEN '15000'
+WHEN (Age > 40) THEN '10000'
+ELSE '50000'
+END
+
