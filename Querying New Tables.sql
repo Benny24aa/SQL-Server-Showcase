@@ -50,5 +50,9 @@ SELECT TOP (5) [OrderID]
   ELSE 'No Merit'
   End
 
-  SELECT *
+  -- Calculating Number of Orders by ShipperName for each Category preallocated in the query above
+  SELECT ShipperName, Category, Count(Category) as Count
   FROM dbo.OrderFullDetail
+  group by ShipperName, Category
+  HAVING count(Category) >0
+  ORDER BY ShipperName, count(Category) DESC
