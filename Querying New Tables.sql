@@ -20,4 +20,10 @@ SELECT TOP (5) [OrderID]
       ,[CustomerName]
       ,[Total]
   FROM [dbo].[OrderFullDetail]
-  ORDER BY OrderDate 
+  ORDER BY OrderDate, OrderID -- Added in Order ID 
+
+  
+  -- Finding Null OrderID (Done on purpose with left join)
+  Select *
+  FROM dbo.OrderFullDetail
+  Where OrderID is NULL
