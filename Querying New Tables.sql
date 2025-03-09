@@ -40,3 +40,15 @@ SELECT TOP (5) [OrderID]
   group by OrderDate
   Having count(OrderDate) > 0
   Order BY count(OrderDate) DESC
+
+  ALTER TABLE dbo.OrderFullDetail
+  ADD Category AS
+  CASE
+  WHEN (Total > 200) THEN 'Good Amount'
+  WHEN (Total > 150) THEN 'Average Amount'
+  WHEN (Total > 100) THEN 'Ok Amount'
+  ELSE 'No Merit'
+  End
+
+  SELECT *
+  FROM dbo.OrderFullDetail
